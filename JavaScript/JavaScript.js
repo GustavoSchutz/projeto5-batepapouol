@@ -20,15 +20,22 @@ function writeMessages() {
   
     for (let index = 0; index < messageData.length; index++) {
       const ulMessageTemplate = `
-        <li>
-            <div class="btn-delete">
-                <ion-icon name="trash-outline"></ion-icon>
-            </div>
-            <span onclick="finalizarTarefa(this)">${tarefas[index]}</span>
+        <li class="type${messageData[index].type}">
+          <p class="text">
+            <p class="recado">
+              <mark>(${messageData[index].time})</mark>
+              <strong>${messageData[index].from}</strong>
+              &nbsppara&nbsp
+              <strong>${messageData[index].to}</strong>
+              :&nbspOlá Maria, tudo bem? Gostaria de tc cmg? Eu gosto do anime do piratinha que estica
+            </p>
+          </p>
+
         </li>
     `;
       document.querySelector("ul").innerHTML += ulMessageTemplate;
     }
   }
   
-  criarTarefasExemplo();
+  writeMessages();
+
