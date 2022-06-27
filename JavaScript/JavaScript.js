@@ -1,33 +1,32 @@
-let messageData = [
-	{
-		from: "João",
-		to: "Todos",
-		text: "entra na sala...",
-		type: "status",
-		time: "08:01:17"
-	},
-	{
-		from: "João",
-		to: "Todos",
-		text: "Bom dia",
-		type: "message",
-		time: "08:02:50"
-	},
-]
-function writeMessages() {
-    contador = messageData.length;
+
+function buscarDados() {
+  const promessa = axios.get("https://mock-api.driven.com.br/api/v6/uol/messages");
+  promessa.then(writeMessages);
+  promessa.catch(tratarFalha);
+}
+
+function tratarFalha(erro) {
+  console.log('falhou')
+	const statusCode = erro.response.status;
+	console.log(statusCode);
+}
+
+function writeMessages(messages) {
+    const messagesData = messages.data;
+    contador = messagesData.length;
+    console.log(contador);
     document.querySelector("ul").innerHTML = "";
   
-    for (let index = 0; index < messageData.length; index++) {
+    for (let index = 0; index < messagesData.length; index++) {
       const ulMessageTemplate = `
-        <li class="type${messageData[index].type}">
+        <li class="${messagesData[index].type}">
           <p class="text">
             <p class="recado">
-              <mark>(${messageData[index].time})</mark>
-              <strong>${messageData[index].from}</strong>
+              <mark>(${messagesData[index].time})</mark>
+              <strong>${messagesData[index].from}</strong>
               &nbsppara&nbsp
-              <strong>${messageData[index].to}</strong>
-              :&nbspOlá Maria, tudo bem? Gostaria de tc cmg? Eu gosto do anime do piratinha que estica
+              <strong>${messagesData[index].to}</strong>
+              :&nbsp${messagesData[index].text}
             </p>
           </p>
 
@@ -37,5 +36,5 @@ function writeMessages() {
     }
   }
   
-  writeMessages();
-
+  //writeMessages();
+buscarDados();

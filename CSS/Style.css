@@ -61,11 +61,11 @@ li {
     background-color: #FFFFFF;
     padding: 2vh 0;
 }
-.typeprivate_message {
+.private_message {
     background-color: #FFDEDE;
 }
-.typestatus {
-    background-color: goldenrod;
+.status {
+    background-color: #DCDCDC;
 }
 p {
     font-size: .9rem;
