@@ -1,3 +1,4 @@
+let possoRodars = true;
 let username = {
   name: ""
 }
@@ -777,12 +778,30 @@ function logIn(username) {
   //executar funcão sucesso e apagar tela de login ou executar erro e criar uma alert de erro.
 }
 
-function alertError() {
+function alertError(error) {
   console.log(error.response.status)
+  //let errodelogin = error.response.status;
+  //if (errodelogin === "Request failed with status code 400"){
+  //  alert("Nome em uso");
+  //}
+  //document.getElementById("usernamebox").innerHTML("");
+  //error.response.status tá dando erro no log do erro;
 }
-
 function iniciarPostCont() {
   buscarDados();
-  console.log("deucerto")
-  document.getElementById("loginPage").classList.add("escondido")
+  document.getElementById("loginPage").classList.add("escondido");
+  setInterval(keepLogIn, 1000*5);
+  }
+function keepLogIn() {
+  username
+  let keepUsername = {
+    name: username
+  }
+  console.log('Me mantendo conectado')
+}
+
+function readNewMessage() {
+  let newMessage = document.getElementById("fname").value;
+  console.log(newMessage);
+  document.getElementById("fname").value = "";
 }
