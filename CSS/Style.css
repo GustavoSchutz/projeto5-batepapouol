@@ -80,3 +80,42 @@ mark {
     color: #AAAAAA;
     margin: 0 .5rem;
 }
+.loginPage {
+    background-color: #FFFFFF;
+    width: 100vw;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.loginPage img {
+    margin-bottom: 0vh;
+    width: 10rem;
+}
+.inputUser {
+    margin-top: 10vh;
+}
+.loginPage button {
+    margin-top: 10vh;
+    cursor: pointer;
+    background-color: green;
+}
+
+#usernameBox {
+    width: 80%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+
+.escondido {
+    display: none;
+}

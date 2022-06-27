@@ -1,3 +1,6 @@
+let username = {
+  name: ""
+}
 let messagesData = [
   {
     "from": "dddddddddddd",
@@ -717,9 +720,7 @@ function tratarFalha(erro) {
 function writeMessages(messages) {
   let stopRepeating = messages.data;
   let lastMessagesDataTimeNew = (stopRepeating[99].time);
-  let lastMessagesDataTime = (messagesData[99].time)
-  console.log(lastMessagesDataTime);
-  console.log(lastMessagesDataTimeNew);
+  let lastMessagesDataTime = (messagesData[99].time);
   if (lastMessagesDataTime != lastMessagesDataTimeNew) {
     messagesData = messages.data;
     contador = messagesData.length;
@@ -746,8 +747,7 @@ function writeMessages(messages) {
     const first = ul.lastElementChild;
     first.scrollIntoView(true);
   }
-}
-  
+} 
   //writeMessages();
 buscarDados();
 function writeMessageDataTest() {
@@ -755,3 +755,34 @@ function writeMessageDataTest() {
   console.log("bom dia");
 }
 writeMessageDataTest();
+function readUsername() {
+  let username = document.getElementById("usernamebox").value;
+  logIn(username);
+}
+
+
+function logIn(username) {
+  // pegue username
+  const postUsername = {
+    name: username
+  }
+  console.log(postUsername);
+
+  const promessa = axios.post("https://mock-api.driven.com.br/api/v6/uol/participants", postUsername);
+
+  promessa.then(iniciarPostCont)
+  promessa.catch(alertError)
+
+  //Enviar post
+  //executar funcão sucesso e apagar tela de login ou executar erro e criar uma alert de erro.
+}
+
+function alertError() {
+  console.log(error.response.status)
+}
+
+function iniciarPostCont() {
+  buscarDados();
+  console.log("deucerto")
+  document.getElementById("loginPage").classList.add("escondido")
+}
