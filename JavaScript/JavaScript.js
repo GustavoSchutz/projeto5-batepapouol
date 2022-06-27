@@ -1,5 +1,4 @@
 let newMessage;
-let possoRodars = true;
 let username;
 let messagesData = [
   {
@@ -778,9 +777,11 @@ function logIn(username) {
 }
 
 function alertError(error) {
-  console.log(error.response.status)
+  console.log(error.response.status);
+  alert('Esse nome já está em uso!!');
+  
   //let errodelogin = error.response.status;
-  //if (errodelogin === "Request failed with status code 400"){
+  //if (errodelogin === "400"){
   //  alert("Nome em uso");
   //}
   //document.getElementById("usernamebox").innerHTML("");
@@ -797,8 +798,16 @@ function keepLogIn() {
     name: username
   }
   console.log('Me mantendo conectado')
+  const promessa = axios.post("https://mock-api.driven.com.br/api/v6/uol/status", keepUsername);
+  promessa.then(estaon)
+  promessa.catch(erroPermanencia)
 }
-
+function erroPermanencia() {
+  alert("Você caiu")
+}
+function estaon(){
+  console.log("está onlina")
+}
 function readNewMessage() {
   newMessage = document.getElementById("fname").value;
   console.log(newMessage);
@@ -820,7 +829,7 @@ function enviarMensagem(){
 }
 
 function enviouMensagem(resposta) {
-  console.log(resposta.data);
+  console.log("deu bom");
 }
 
 function erroenviomensagem(e) {
