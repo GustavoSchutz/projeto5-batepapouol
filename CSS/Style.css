@@ -60,6 +60,8 @@ li {
     margin-top: 1vh;
     background-color: #FFFFFF;
     padding: 2vh 0;
+    max-width: 100vw;
+    overflow: hidden;
 }
 .private_message {
     background-color: #FFDEDE;
