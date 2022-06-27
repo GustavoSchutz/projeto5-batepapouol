@@ -1,7 +1,6 @@
+let newMessage;
 let possoRodars = true;
-let username = {
-  name: ""
-}
+let username;
 let messagesData = [
   {
     "from": "dddddddddddd",
@@ -757,7 +756,7 @@ function writeMessageDataTest() {
 }
 writeMessageDataTest();
 function readUsername() {
-  let username = document.getElementById("usernamebox").value;
+  username = document.getElementById("usernamebox").value;
   logIn(username);
 }
 
@@ -801,7 +800,29 @@ function keepLogIn() {
 }
 
 function readNewMessage() {
-  let newMessage = document.getElementById("fname").value;
+  newMessage = document.getElementById("fname").value;
   console.log(newMessage);
   document.getElementById("fname").value = "";
+  enviarMensagem();
+}
+
+function enviarMensagem(){
+  let postMessage = {
+    from: username,
+    to: "todos",
+    text: newMessage,
+    type: "message"
+  }
+  console.log(postMessage)
+  const promessa = axios.post("https://mock-api.driven.com.br/api/v6/uol/messages", postMessage);
+  promessa.then(enviouMensagem);
+  promessa.catch(erroenviomensagem);
+}
+
+function enviouMensagem(resposta) {
+  console.log(resposta.data);
+}
+
+function erroenviomensagem(e) {
+  console.log(e.data);
 }
