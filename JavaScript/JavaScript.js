@@ -835,3 +835,13 @@ function enviouMensagem(resposta) {
 function erroenviomensagem(e) {
   console.log(e.data);
 }
+
+function toggleMenu() {
+  let elementoHeader = document.getElementsByClassName('dimmer');
+  console.log(elementoHeader)
+
+  elementoHeader.classList.toggle("escondido");
+
+
+
+}
